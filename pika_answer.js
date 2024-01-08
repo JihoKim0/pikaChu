@@ -7,7 +7,7 @@ Pikachu.EXE
 
 */
 
-1.
+//1.
 var pika = ptr(0x403C47);
 Interceptor.attach(pika, {
 	onEnter: function (args) {
@@ -18,7 +18,7 @@ Interceptor.attach(pika, {
 	},
 });
 
-2.
+//2.
 var pika2 = ptr(0x403C54);
 Interceptor.attach(pika2, {
 	onEnter: function (args) {
@@ -30,14 +30,14 @@ Interceptor.attach(pika2, {
 });
 
 
-3.
-var pika3 = ptr(0x403C47);
+//3.
+var pika3 = ptr(0x403C54);
 Interceptor.attach(pika3, {
 	onEnter: function (args) {
 		var score = this.context.esi;
 		/*Memory.protect(ptr(score), 16, 'rwx');*/
-		/*console.log(ptr(score).add(64).readPointer()); //2P 점수*/
-		Memory.writeByteArray(ptr(score).add(64), [0xf]);
+		/*console.log(score.add(64).readPointer()); //2P 점수*/
+		Memory.writeByteArray(score.add(64), [0xf]);
 		
 	},
 	onLeave: function (retval) {
